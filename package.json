@@ -34,6 +34,7 @@
     "helmet": "^6.0.0",
     "mysql": "^2.18.1",
     "nest-status-monitor": "^0.1.4",
+    "nest-wechat": "^0.2.22",
     "nestjs-config": "^1.4.10",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

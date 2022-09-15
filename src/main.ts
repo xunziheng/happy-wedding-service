@@ -3,6 +3,13 @@ import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
 
+export const getConfig = () => {
+  delete require.cache[require.resolve('config')];
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const config = require('config');
+  return config;
+};
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');

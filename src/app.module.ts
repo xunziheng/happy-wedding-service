@@ -8,10 +8,15 @@ import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 import statusMonitorConfig from './config/monitor';
 import { HttpModule } from '@nestjs/axios';
+import { WeChatModule } from 'nest-wechat';
+import { getConfig } from './main';
+
+const weixin: any = getConfig().get('weixin');
 
 @Module({
   imports: [
     UserModule,
+    WeChatModule.register({ appId: weixin.appId, secret: weixin.secret }),
     HttpModule.register({
       timeout: 5000,
       maxRedirects: 5,
