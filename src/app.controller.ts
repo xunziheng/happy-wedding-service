@@ -20,9 +20,9 @@ export class AppController {
   @Redirect()
   weixinAuth(): object {
     const appId = weixinConfig.appId;
-    const redirectUrl = weixinConfig.redirectUrl;
+    const redirectUri = weixinConfig.redirectUri;
     return {
-      url: `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${redirectUrl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`,
+      url: `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${redirectUri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`,
     };
   }
 
