@@ -17,6 +17,8 @@ import { WeChatModule } from 'nest-wechat';
     WeChatModule.register({
       appId: weixinConfig.appId,
       secret: weixinConfig.secret,
+      token: weixinConfig.token,
+      encodingAESKey: weixinConfig.encodingAESKey,
     }),
     HttpModule.register({
       timeout: 5000,
