@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Redirect } from '@nestjs/common';
 import { AppService } from './app.service';
 import { WeChatService } from 'nest-wechat';
 import weixinConfig from './config/weixin';
@@ -14,6 +14,16 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('weixinAuth')
+  @Redirect()
+  weixinAuth(): object {
+    const appId = weixinConfig.appId;
+    const redirectUrl = weixinConfig.redirectUrl;
+    return {
+      url: `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appId}&redirect_uri=${redirectUrl}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`,
+    };
   }
 
   @Get('weixinCheck')
