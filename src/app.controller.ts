@@ -1,6 +1,6 @@
 import { Controller, Get, Query, Redirect } from '@nestjs/common';
 import { AppService } from './app.service';
-import { WeChatService } from 'nest-wechat';
+import { SignatureResult, WeChatService } from 'nest-wechat';
 import weixinConfig from './config/weixin';
 import { MessageCrypto } from 'nest-wechat';
 
@@ -14,6 +14,15 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('jssdkSignatureGet')
+  jssdkSignatureGet(): Promise<SignatureResult> {
+    return this.weChatService.jssdkSignature(
+      'www.baidu.com',
+      weixinConfig.appId,
+      weixinConfig.secret,
+    );
   }
 
   @Get('weixinAuth')

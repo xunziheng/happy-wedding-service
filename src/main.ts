@@ -15,6 +15,6 @@ async function bootstrap() {
       max: 500, // 限制15分钟内最多只能访问300次
     }),
   );
-  await app.listen(5173);
+  await app.listen(3000);
 }
 bootstrap();
