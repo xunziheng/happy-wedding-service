@@ -17,7 +17,7 @@ export class AppController {
   }
 
   @Get('jssdkSignatureGet')
-  jssdkSignatureGet(): Promise<SignatureResult> {
+  async jssdkSignatureGet(): Promise<SignatureResult> {
     return this.weChatService.jssdkSignature(
       'www.baidu.com',
       weixinConfig.appId,

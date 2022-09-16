@@ -9,7 +9,7 @@ import { UserModule } from './modules/user/user.module';
 import statusMonitorConfig from './config/monitor';
 import weixinConfig from './config/weixin';
 import { HttpModule } from '@nestjs/axios';
-import { WeChatModule } from 'nest-wechat';
+import { MapCache, WeChatModule } from 'nest-wechat';
 
 @Module({
   imports: [
@@ -19,6 +19,7 @@ import { WeChatModule } from 'nest-wechat';
       secret: weixinConfig.secret,
       token: weixinConfig.token,
       encodingAESKey: weixinConfig.encodingAESKey,
+      cacheAdapter: new MapCache(),
     }),
     HttpModule.register({
       timeout: 5000,
